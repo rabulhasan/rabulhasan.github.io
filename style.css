@@ -318,19 +318,38 @@ section {
 
 #experience {
   position: relative;
+  padding: 2rem 0; /* Add some padding for spacing */
 }
 
 .experience-sub-title {
   color: rgb(85, 85, 85);
   font-weight: 600;
   font-size: 1.75rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem; /* Adjust spacing below title */
 }
 
+/* Adjustments to articles inside .experience-details-container */
 .experience-details-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+.about-containers {
+  display: flex;
+  gap: 2rem; /* Spacing between skill sections */
+  flex-wrap: wrap; /* Ensure wrapping when necessary */
+  justify-content: center; /* Center content */
+  width: 100%;
+}
+
+.details-container {
+  flex: 1 1 300px; /* Flexible width with a minimum of 300px */
+  max-width: 400px; /* Set a maximum width */
+  text-align: center; /* Center the content */
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background: #f9f9f9;
+  border-radius: 10px; /* Optional: add a little rounding for style */
 }
 
 .article-container {
@@ -342,16 +361,34 @@ section {
   justify-content: space-around;
 }
 
+/* Individual skill articles */
 article {
   display: flex;
-  width: 10rem;
-  justify-content: space-around;
-  gap: 0.5rem;
+  flex-direction: column;  /* Stack text vertically */
+  align-items: center;     /* Center content horizontally */
+  text-align: center;      /* Center text lines */
+  gap: 0.25rem;            /* Adjust gap between icon and text */
+  padding: 0.5rem;         /* Padding inside each article for spacing */
+  width: 10rem;            /* Maintain a consistent width */
+  word-wrap: break-word;   /* Allows text to wrap within the container */
+  max-width: 100%;         /* Prevents text from overflowing */
+}
+
+.article-container article {
+  flex: 1 1 120px;  /* Flex-grow, flex-shrink, and flex-basis */
+  max-width: 180px; /* Maximum width for each article */
+}
+
+
+article h3, article p {
+  font-size: calc(0.8rem + 0.5vw); /* Responsive font size */
 }
 
 article .icon {
-  cursor: default;
+  height: 20px; /* Adjust the size of the icons */
+  width: 20px;
 }
+
 
 /* PROJECTS SECTION */
 
@@ -429,4 +466,19 @@ footer {
 
 footer p {
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .experience-details-container, .about-containers {
+    flex-direction: column;  /* Stack sections vertically on small screens */
+  }
+
+  .article-container article {
+    flex-basis: 100%;  /* Full width on small screens */
+    max-width: none;   /* Remove max-width constraint */
+  }
+
+  article h3, article p {
+    font-size: smaller;  /* Smaller font size for smaller screens */
+  }
 }
